@@ -23,11 +23,15 @@ class User extends ActiveRecord implements IdentityInterface {
         return $this->hasMany(Contact::className(), ['contact_id' => 'contact_id'])->via('favorites');
     }
     
+    public function registration() {
+        $this->password = self::getPasswordHash($this->password);
+        return $this->save();
+    }
+    
     public function beforeSave($insert) {
         if (!parent::beforeSave($insert)) {
             return false;
         }
-        $this->password = self::getPasswordHash($this->password);
         if ($this->isNewRecord) {
             $this->auth_key = \Yii::$app->security->generateRandomString();
         }

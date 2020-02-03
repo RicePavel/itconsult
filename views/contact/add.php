@@ -24,3 +24,5 @@ $form = ActiveForm::begin();
 <?= Html::submitButton('Добавить', ['class' => 'btn btn-primary']) ?>
 <?php ActiveForm::end(); ?>
 
+
+

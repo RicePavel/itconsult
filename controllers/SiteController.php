@@ -64,7 +64,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->redirect(['contact/list']);
+        //return $this->render('index');
     }
 
     /**
@@ -145,7 +146,7 @@ class SiteController extends Controller
     public function actionRegistration() {
         $model = new User();
         if ($model->load(Yii::$app->request->post())) {
-            $ok = $model->save();
+            $ok = $model->registration();
             if ($ok) {
                 return $this->render('registration_success');
             }

@@ -11,7 +11,7 @@ $this->title = 'Войти';
 
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h2><?= $this->title ?></h2>
 
     <div><b><?= $model->error ?></b></div> <br/>
     
@@ -37,3 +37,5 @@ $this->title = 'Войти';
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?= Html::a('Регистрация', ['/site/registration'], ['class' => 'btn btn-light']) ?>

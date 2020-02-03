@@ -20,7 +20,7 @@ $this->title = 'Избранное';
 
 <table class="table">
     <?php foreach ($contacts as $contact) { ?>
-    <tr>
+    <tr class="bg-success" >
         <td><?= Html::encode($contact->fio) ?></td>
         <td><?= Html::encode($contact->phone) ?></td>
         <td><?= Html::encode($contact->email) ?></td>
@@ -28,7 +28,9 @@ $this->title = 'Избранное';
             <?php $form = ActiveForm::begin(['action' => ['favorite/delete']]) ?>
                 <input type="hidden" name="contact_id" value="<?= $contact->contact_id ?>" />
                 <input type="hidden" name="source_page" value="favorite_list" />
-                <input type="submit" value="Убрать из избранного" />
+                <button type="submit" class="btn btn-default" title="Убрать из избранного" >
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                </button>
             <?php ActiveForm::end(); ?>
         </td>
     </tr>
