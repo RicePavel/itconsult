@@ -28,7 +28,13 @@ class ContactController extends Controller {
     
     public function actionList() {
         $contacts = Contact::find()->all();
-        return $this->render('list', ['contacts' => $contacts]);
+        $user = Yii::$app->user->identity;
+        $favoriteContacts = $user->favoriteContacts;
+        $favoriteContactsIds = [];
+        foreach ($favoriteContacts as $contact) {
+            $favoriteContactsIds[] = $contact->contact_id;
+        }
+        return $this->render('list', ['contacts' => $contacts, 'favoriteContactsIds' => $favoriteContactsIds]);
     }
     
     public function actionChange($contact_id) {

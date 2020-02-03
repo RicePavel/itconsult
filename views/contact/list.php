@@ -43,6 +43,19 @@ $this->title = 'Контакты';
                 <input type="submit" value="Удалить" onclick="return confirm('Подтвердите удаление')" />
             <?php ActiveForm::end(); ?>
         </td>
+        <td>
+            <?php if (in_array($contact->contact_id, $favoriteContactsIds)) { ?>
+                <?php $form = ActiveForm::begin(['action' => ['favorite/delete']]) ?>
+                    <input type="hidden" name="contact_id" value="<?= $contact->contact_id ?>" />
+                    <input type="submit" value="Убрать из избранного" />
+                <?php ActiveForm::end(); ?>
+            <?php } else { ?>
+                <?php $form = ActiveForm::begin(['action' => ['favorite/add']]) ?>
+                    <input type="hidden" name="contact_id" value="<?= $contact->contact_id ?>" />
+                    <input type="submit" value="Добавить в избранное" />
+                <?php ActiveForm::end(); ?>
+            <?php } ?>
+        </td>
     </tr>
     <?php } ?>
 </table>

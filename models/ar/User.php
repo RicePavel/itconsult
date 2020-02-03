@@ -15,6 +15,14 @@ class User extends ActiveRecord implements IdentityInterface {
         ];
     }
     
+    public function getFavorites() {
+        return $this->hasMany(Favorite::className(), ['user_id' => 'user_id']);
+    }
+    
+    public function getFavoriteContacts() {
+        return $this->hasMany(Contact::className(), ['contact_id' => 'contact_id'])->via('favorites');
+    }
+    
     public function beforeSave($insert) {
         if (!parent::beforeSave($insert)) {
             return false;
