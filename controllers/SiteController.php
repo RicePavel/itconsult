@@ -86,21 +86,6 @@ class SiteController extends Controller
         }
         $model->password = '';
         return $this->render('login_1', ['model' => $model]);
-        /*
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login_1', [
-            'model' => $model,
-        ]);
-         */
     }
 
     /**
@@ -151,6 +136,7 @@ class SiteController extends Controller
                 return $this->render('registration_success');
             }
         }
+        $model->password = '';
         return $this->render('registration', ['model' => $model]);
     }
     

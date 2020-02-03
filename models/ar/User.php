@@ -11,7 +11,8 @@ class User extends ActiveRecord implements IdentityInterface {
         return [
             [['login', 'password'], 'safe'],
             [['login', 'password'], 'required', 'message' => 'Обязательное поле'],
-            [['login'], 'unique', 'message' => 'Такой логин уже есть в системе, введите другое значение']
+            [['login'], 'unique', 'message' => 'Такой логин уже есть в системе, введите другое значение'],
+            [['login', 'password'], 'string', 'length' => [3, 250], 'message' => 'Значение должно быть строкой', 'tooLong' => 'не более {max} символов', 'tooShort' => 'не менее {min} символов']
         ];
     }
     
