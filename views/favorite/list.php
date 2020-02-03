@@ -27,6 +27,7 @@ $this->title = 'Избранное';
         <td>
             <?php $form = ActiveForm::begin(['action' => ['favorite/delete']]) ?>
                 <input type="hidden" name="contact_id" value="<?= $contact->contact_id ?>" />
+                <input type="hidden" name="source_page" value="favorite_list" />
                 <input type="submit" value="Убрать из избранного" />
             <?php ActiveForm::end(); ?>
         </td>

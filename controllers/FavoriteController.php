@@ -41,7 +41,12 @@ class FavoriteController extends Controller {
             }
         }
         $user->save();
-        return $this->redirect(['favorite/list']);
+        $source_page = Yii::$app->request->post('source_page');
+        if ($source_page != null && $source_page == 'contact_list') {
+            return $this->redirect(['contact/list']);  
+        } else {
+            return $this->redirect(['favorite/list']);
+        }
     }
     
     public function actionAdd() {
@@ -53,7 +58,12 @@ class FavoriteController extends Controller {
             $user->link('favoriteContacts', $contact);
         }
         $user->save();
-        return $this->redirect(['favorite/list']);
+        $source_page = Yii::$app->request->post('source_page');
+        if ($source_page != null && $source_page == 'contact_list') {
+            return $this->redirect(['contact/list']);  
+        } else {
+            return $this->redirect(['favorite/list']);
+        }
     }
     
 }
