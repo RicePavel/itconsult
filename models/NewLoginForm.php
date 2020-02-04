@@ -32,7 +32,7 @@ class NewLoginForm extends Model {
                 return true;
             }
         }
-        $this->error = 'Не найден пользователь с такими логином и паролем';
+        $this->error = 'Не найден пользователь с такими логином и паролем. Сначала вам нужно зарегистрироваться.';
         return false;
     }
     
