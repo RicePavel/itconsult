@@ -12,7 +12,7 @@ class Contact extends ActiveRecord {
             [['fio'], 'required', 'message' => 'Обязательное поле'],
             [['fio', 'phone', 'email'], 'string', 'max' => 250, 'message' => 'Значение должно быть строкой', 'tooLong' => 'не более {max} символов'],
             [['email'], 'email', 'message' => 'Введите корректный email-адрес'],
-            [['phone'], 'match', 'pattern' => '/[0-9\-\(\)+]+/', 'message' => 'Введите корректный номер телефона']
+            [['phone'], 'match', 'pattern' => '/[0-9\-\(\)+\s]+/', 'message' => 'Введите корректный номер телефона']
         ];
     }
         
